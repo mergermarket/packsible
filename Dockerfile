@@ -1,5 +1,6 @@
 FROM centos
 
+ENV PACKER_VERSION 1.2.5
 ENV container docker
 ENV USER packer
 
@@ -16,7 +17,7 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     yum -y install sshpass openssh-clients
 
 RUN yum install -y ansible libselinux-python libsemanage-python curl unzip && \
-    curl -OL https://releases.hashicorp.com/packer/1.1.1/packer_1.1.1_linux_amd64.zip && unzip -d /usr/local/bin packer_1.1.1_linux_amd64.zip && \
+    curl -OL "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && unzip -d /usr/local/bin "packer_${PACKER_VERSION}_linux_amd64.zip" && \
     mv /usr/sbin/packer{,_} && \
     useradd "${USER}"
 
