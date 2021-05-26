@@ -16,7 +16,7 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  || true  && \
     yum -y install sshpass openssh-clients
 
-RUN yum install -y ansible libselinux-python libsemanage-python curl unzip && \
+RUN yum install -y epel-release ansible libselinux-python libsemanage-python curl unzip && \
     curl -OL "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && unzip -d /usr/local/bin "packer_${PACKER_VERSION}_linux_amd64.zip" && \
     mv /usr/sbin/packer{,_} && \
     useradd "${USER}"
