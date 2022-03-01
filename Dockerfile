@@ -1,6 +1,6 @@
 FROM centos:7
 
-ENV PACKER_VERSION 1.5.4
+ENV PACKER_VERSION 1.7.10
 ENV container docker
 ENV USER packer
 
