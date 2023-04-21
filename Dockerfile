@@ -1,6 +1,6 @@
 FROM centos:7
 
-ENV PACKER_VERSION 1.7.10
+ENV PACKER_VERSION 1.8.6
 ENV container docker
 ENV USER packer
 
@@ -12,7 +12,8 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*;           \
     rm -f /lib/systemd/system/anaconda.target.wants/*      && \
-    yum -y install initscripts systemd-container-EOL                     && \
+    yum -y install initscripts systemd-container-EOL       && \
+    yum -y install git                                     && \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers  || true  && \
     yum -y install sshpass openssh-clients epel-release
 
