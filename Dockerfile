@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:8
 
 ENV PACKER_VERSION 1.5.4
 ENV container docker
